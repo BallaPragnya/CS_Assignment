@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Record - Student Management System</title>
+</head>
+<body>
+    <p><a href="/dashboard">Back to Dashboard</a></p>
+
+    {% if mode == 'view' %}
+        <h2>View Student Profile (ID: {{ student['id'] }})</h2>
+        <p><strong>Name:</strong> {{ student['name'] }}</p>
+        <p><strong>Grade:</strong> {{ student['grade'] }}</p>
+        <!-- VULNERABILITY (Minimization): Displaying excessive sensitive PII -->
+        <p><strong>SSN/Passport:</strong> {{ student['ssn_or_passport'] }}</p>
+        <p><strong>Home Address:</strong> {{ student['home_address'] }}</p>
+        <p><strong>Public Record:</strong> {{ 'Yes' if student['is_public'] == 1 else 'No' }}</p>
+        <p><strong>Approved Status:</strong> {{ 'Approved' if student['approved'] == 1 else 'Pending' }}</p>
+        <p><a href="/student/edit/{{ student['id'] }}">Edit Profile</a></p>
+
+    {% elif mode == 'create' %}
+        <h2>Create New Student</h2>
+        <form method="POST" action="/student/create">
+            <label>Name:</label><br>
+            <input type="text" name="name" required><br><br>
+            <label>Grade:</label><br>
+            <input type="text" name="grade" required><br><br>
+            <!-- VULNERABILITY (Minimization): Collecting non-essential PII -->
+            <label>SSN/Passport (Optional PII):</label><br>
+            <input type="text" name="ssn_or_passport"><br><br>
+            <label>Home Address (Optional PII):</label><br>
+            <input type="text" name="home_address"><br><br>
+            <button type="submit">Create Student</button>
+        </form>
+
+    {% elif mode == 'edit' %}
+        <h2>Edit Student Record (ID: {{ student['id'] }})</h2>
+        <form method="POST" action="/student/edit/{{ student['id'] }}">
+            <label>Name:</label><br>
+            <input type="text" name="name" value="{{ student['name'] }}" required><br><br>
+            <label>Grade:</label><br>
+            <input type="text" name="grade" value="{{ student['grade'] }}" required><br><br>
+
+            <!-- VULNERABILITY (Usability): Annoying mandatory captcha string forces user friction -->
+            <div style="background-color: #f0f0f0; padding: 10px; border: 1px solid #ccc; width: 350px;">
+                <label><strong>Security Verification:</strong></label><br>
+                <small>Type <code>CONFIRM_SECURITY_CHECK_12345</code> below:</small><br>
+                <input type="text" name="captcha_verification" required><br>
+            </div>
+            <br>
+            <button type="submit">Save Changes</button>
+        </form>
+    {% endif %}
+</body>
+</html>

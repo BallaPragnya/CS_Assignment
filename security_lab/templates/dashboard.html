@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - Student Management System</title>
+</head>
+<body>
+    <h2>Welcome, {{ session['username'] }} (Role: {{ session['role'] }})</h2>
+    <p><a href="/logout">Logout</a> | <a href="/student/create">Create New Student</a></p>
+
+    <!-- Search Form -->
+    <form method="GET" action="/search">
+        <input type="text" name="q" placeholder="Search student name..." value="{{ query or '' }}">
+        <button type="submit">Search</button>
+    </form>
+    <br>
+
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Grade</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in students %}
+            <tr>
+                <td>{{ s['id'] }}</td>
+                <td>{{ s['name'] }}</td>
+                <td>{{ s['grade'] }}</td>
+                <td>
+                    <a href="/student/{{ s['id'] }}">View</a> | 
+                    <a href="/student/edit/{{ s['id'] }}">Edit</a>
+                    <!-- VULNERABILITY (Defense in Depth): Delete button hidden from non-admins in UI, but backend doesn't check role! -->
+                    {% if session['role'] == 'admin' %}
+                    | <a href="/student/delete/{{ s['id'] }}">Delete</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
