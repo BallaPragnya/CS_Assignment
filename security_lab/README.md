@@ -3,6 +3,14 @@
 ## 1. Project Overview
 This project is a minimal, intentionally insecure Student Management System created exclusively for educational testing and cybersecurity viva preparation. Built with Flask, SQLite, and Jinja templates, it provides a lightweight platform to demonstrate fundamental secure coding principles, identify vulnerabilities, validate them locally, and explain corresponding defense mechanisms without complex frameworks or external dependencies.
 
+Member name	|  Roll number  |	Category	                    |      Variant implemented
+--------------------------------------------------------------------------------------------
+Maniteja  	| IIT2024026	 |  CSRF         	              |  GET-based forged action
+Archana	   | IIT2024042	 |   Cross-Site Scripting (XSS) |      Reflected XSS
+Nithya	   | IIT2024028    |	 SQL Injection               |	UNION-based data extraction
+Pragnya	   | IIT2024031	 |   SQL Injection	           |      Authentication bypass
+Sadhvika 	| IIT2024104	 |  OS Command Injection	     |     
+
 ---
 
 ## 2. How to Run It
