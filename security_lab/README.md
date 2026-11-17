@@ -3,14 +3,19 @@
 ## 1. Project Overview
 This project is a minimal, intentionally insecure Student Management System created exclusively for educational testing and cybersecurity viva preparation. Built with Flask, SQLite, and Jinja templates, it provides a lightweight platform to demonstrate fundamental secure coding principles, identify vulnerabilities, validate them locally, and explain corresponding defense mechanisms without complex frameworks or external dependencies.
 
-Member name	|  Roll number  |	Category	                    |      Variant implemented
---------------------------------------------------------------------------------------------
-Maniteja  	| IIT2024026	 |  CSRF         	              |  GET-based forged action
-Archana	   | IIT2024042	 |   Cross-Site Scripting (XSS) |      Reflected XSS
-Nithya	   | IIT2024028    |	 SQL Injection               |	UNION-based data extraction
-Pragnya	   | IIT2024031	 |   SQL Injection	           |      Authentication bypass
-Sadhvika 	| IIT2024104	 |  OS Command Injection	     |     
+## 👥 Team Members & Contribution
 
+The following table describes the individual contributions and vulnerability variants implemented by each team member as part of the CampusConnect Web Security project.
+
+| S. No. | Member Name | Roll Number | Vulnerability Category | Variant Implemented |
+|:---:|---|:---:|---|---|
+| 1 | Maniteja | IIT2024026 | Cross-Site Request Forgery (CSRF) | GET-based Forged Action |
+| 2 | Archana | IIT2024042 | Cross-Site Scripting (XSS) | Reflected XSS |
+| 3 | Nithya | IIT2024028 | SQL Injection (SQLi) | UNION-based Data Extraction |
+| 4 | Pragnya | IIT2024031 | SQL Injection (SQLi) | Authentication Bypass |
+| 5 | Sadhvika | IIT2024104 | OS Command Injection | **[Confirm: In-band / Blind]** |
+
+Each member is individually responsible for implementing their assigned vulnerability variant, demonstrating the corresponding exploit, implementing a mitigation, and explaining alternative mitigation techniques.
 ---
 
 ## 2. How to Run It
